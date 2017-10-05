@@ -1,0 +1,393 @@
+// compileCompressed: style.css
+
+$white: #FFF;
+$black : #000;
+$red: #dc4141;
+$wah: #236478;
+
+@mixin trans($ms) {
+    -webkit-transition: all $ms ease;
+    -moz-transition: all $ms ease;
+    -ms-transition: all $ms ease;
+    -o-transition: all $ms ease;
+    transition: all $ms ease;
+}
+
+@mixin notice {
+    margin-top: 20px;
+    padding: 10px;
+    color: #FFF;
+    font-weight: 400;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+body,
+input, button,
+select, textarea,
+a, p,
+h1, h2, h3,
+h4, h5, h6 {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 300;
+}
+strong, b {
+    font-weight: 400;
+}
+hr {
+    border-color: $wah;
+}
+.header {
+    text-align: center;
+    background-color: $wah;
+}
+.container {
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+.page-titles {
+    margin:30px 0;
+    text-align: center;
+    .page-title {
+        font-weight: 400;
+        font-size:30px;
+        margin:0 0 20px 0;
+    }
+    .page-sub-title{
+        font-size:26;
+        margin:0;
+        span {
+            background: $wah;
+            color: #FFF;
+            display: inline-block;
+            padding: 4px 5px;
+        }
+    }
+}
+
+.builder-form-wrapper {
+    display: inline-block;
+    width: 100%;
+    clear: both;
+    margin-top: 20px;
+}
+
+.builder-form {
+    margin:0;
+    float: left;
+    width: 55%;
+    margin-right: 5%;
+    .form-row {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom:1px solid $wah;
+        label {
+            margin-bottom: 10px;
+            display: block;
+            &.inline {
+                display: block;
+                span {
+                    display: inline-block;
+                }
+            }
+            span {
+                display: block;
+                font-weight: 400;
+                margin-bottom: 10px;
+            }
+        }
+        h3 {
+            font-weight: 300;
+            font-size: 20px;
+            margin:0 0 20px 0;
+            span {
+                background: $wah;
+                color: $white;
+                padding: 2px 10px;
+                display: inline-block;
+            }
+        }
+    }
+    input {
+        font-size:18px;
+        @include trans(250ms);
+        &[type="text"]{
+            border:2px solid $wah;
+            height: 30px;
+            padding: 5px;
+            width: 97.5%;
+        }
+        &:focus {
+            background:$wah;
+            color: $white;
+        }
+    }
+    select {
+        font-size:18px;
+        border:2px solid $wah;
+        background: $white;
+        height: 40px;
+        width: 100%;
+    }
+    .submit {
+        cursor: pointer;
+        background: darken($wah, 20%);
+        color: $white;
+        border:0;
+        padding: 0px 20px;
+        height: 46px;
+        font-weight: 400;
+        font-size:26px;
+        @include trans(300ms);
+        &:hover,
+        &:focus {
+            background: $black;
+        }
+    }
+}
+
+.builder-live {
+    width: 40%;
+    float: right;
+    h3 {
+        font-weight: 300;
+        font-size: 20px;
+        margin:0 0 20px 0;
+        span {
+            background: $wah;
+            color: $white;
+            padding: 2px 10px;
+            display: inline-block;
+        }
+    }
+    .builder-live-content {
+        background: $black;
+        margin-top: 20px;
+        min-height: 940px;
+        border:2px solid $wah;
+    }
+}
+
+.buider-preview {
+    width: 100%;
+    float: right;
+    margin-bottom: 50px;
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top:1px solid $wah;
+    textarea {
+        direction: ltr;
+        width: 99%;
+        height: 400px;
+        font-size:14px;
+        border:2px solid $wah;
+        &:focus {
+            background:$wah;
+            color: $white;
+        }
+    }
+    h3 {
+        font-weight: 300;
+        font-size: 20px;
+        margin:0 0 20px 0;
+        span {
+            background: $wah;
+            color: $white;
+            padding: 2px 10px;
+            display: inline-block;
+        }
+    }
+}
+.notice {
+    @include notice;
+    background: $red;
+}
+.copied {
+    @include notice;
+    background: $wah;
+}
+
+.locale-selector {
+    margin:10px 0;
+    text-align: center;
+    direction: ltr;
+    button {
+        background: $black;
+        border:0;
+        padding: 5px 6px 3px 6px;
+        width: 40px;
+        display: inline-block;
+        cursor: pointer;
+        &.activeLang{
+            background: $wah;
+        }
+    }
+}
+
+.builder {
+    &.rtl {
+        direction: rtl;
+        text-align: right;
+        .builder-form {
+            float: right;
+            margin:0 0 0 5%;
+        }
+        .buider-preview {
+            float: left;
+        }
+    }
+}
+
+.builder-live-content {
+    position: relative;
+    .accessability_container {
+        width: 200px;
+        position: absolute;
+        height: 100%;
+        top:0;
+        &.accessibility-location-right {
+            right:0;
+        }
+        &.accessibility-location-left {
+            left:0;
+        }
+        &.dark_theme {
+            background: #232323;
+            color: $white;
+            .a_module{
+                border-bottom: 1px solid #444343;
+            }
+        }
+        &.light_theme {
+            background: $white;
+            color: $black;
+            .a_module_title {
+                color: $black;
+            }
+        }
+        .a_module {
+            padding-bottom: 0.6rem;
+            margin-bottom: 0.6rem;
+        }
+        button.wah-action-button {
+            background: #232323;
+            color: $white;
+            width: 100%;
+            padding: 5px 0;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid $white;
+            font-size: 15px;
+            font-weight: bold;
+            margin: 0;
+        }
+        .font_resizer button {
+            &.wah-action-button.smaller {
+                width: 46%;
+                float: left;
+            }
+            &.wah-action-button.larger {
+                float: right;
+                width: 46%;
+            }
+            &.wah-action-button.wah-font-reset {
+                margin-top: 12px;
+                width: 100%;
+                clear: both;
+            }
+        }
+        button.wah-action-button:hover,
+        button.wah-action-button:focus,
+        button.wah-action-button.active_button {
+            background: #fff !important;
+            color: #000 !important;
+        }
+
+    }
+    .a_module_title {
+        margin-bottom: 0.4rem;
+        font-weight: 600;
+    }
+    .access_container_inner {
+        padding: 0 10px;
+        margin-top: 14px;
+    }
+    #access_container {
+        margin-top: 0;
+        padding-top: 10px;
+    }
+    button.close_container {
+        background: $wah;
+        color: $white;
+        cursor: pointer;
+        display: block;
+        padding: 0;
+        border: 0;
+        width: 92%;
+        margin: 0 auto;
+        height: 34px;
+        line-height: 34px;
+        font-weight: bold;
+        font-size: 15px;
+    }
+}
+
+.live-preview-bg-colors {
+    button {
+        width: 30px;
+        height: 30px;
+        border:2px solid $wah;
+        margin-right: 5px;
+        cursor: pointer;
+        &.white {
+            background: $white;
+        }
+        &.black {
+            background: $black;
+        }
+        &.grey {
+            background: grey;
+        }
+    }
+}
+
+.step-header {
+    font-size: 32px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin: 20px 0;
+    span {
+        display: block;
+        background: $black;
+        color: $white;
+        padding: 10px;
+    }
+}
+.step-description {
+    font-size:20px;
+}
+
+@media screen and (max-width:960px){
+    .container {
+        padding: 0 20px;
+        max-width: 100%;
+        width:auto;
+    }
+    .builder-form{
+        width: 100%;
+        margin: 0 0 40px 0;
+        clear: both;
+    }
+    .builder-preview {
+        clear: both;
+        width: 100%;
+        float: left;
+    }
+}
