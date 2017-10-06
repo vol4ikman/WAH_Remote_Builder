@@ -1,8 +1,6 @@
 <template>
     <div id="app">
-        <div class="header">
-            <img src="static/images/wahpro-wide-logo.png" alt="WAH PRO Remote script Builder">
-        </div>
+        <app-header></app-header>
         <div class="container">
             <builder></builder>
         </div>
@@ -12,11 +10,13 @@
 <script>
 
 import Builder from './components/Builder';
+import Header from './components/Header';
 
 export default {
-  name: 'app',
-  components: {
-    Builder
-  }
+    name: 'app',
+    components: {
+        Builder,
+        appHeader: Header
+    }
 }
 </script>

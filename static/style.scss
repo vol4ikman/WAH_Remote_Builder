@@ -20,6 +20,10 @@ $wah: #236478;
     font-weight: 400;
 }
 
+#app {
+    margin-bottom: 30px;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -61,7 +65,7 @@ hr {
         margin:0 0 20px 0;
     }
     .page-sub-title{
-        font-size:26;
+        font-size:26px;
         margin:0;
         span {
             background: $wah;
@@ -138,7 +142,7 @@ hr {
     }
     .submit {
         cursor: pointer;
-        background: darken($wah, 20%);
+        background: #137b19;
         color: $white;
         border:0;
         padding: 0px 20px;
@@ -148,7 +152,7 @@ hr {
         @include trans(300ms);
         &:hover,
         &:focus {
-            background: $black;
+            background: darken(#137b19, 5%);
         }
     }
 }
@@ -185,7 +189,7 @@ hr {
     textarea {
         direction: ltr;
         width: 99%;
-        height: 400px;
+        height: 420px;
         font-size:14px;
         border:2px solid $wah;
         &:focus {
@@ -271,6 +275,38 @@ hr {
             .a_module_title {
                 color: $black;
             }
+        }
+        &.wahpro-wide-sidebar {
+            width: 350px;
+            .a_module:not(.wah_font_resize) {
+                border: 0;
+                width: 46%;
+                float: left;
+                margin: 0 2%;
+            }
+            .a_module_title {
+                display: none !important;
+                visibility: hidden !important;
+            }
+        }
+        &.wahpro-magic-sidebar {
+            background: none !important;
+            .a_module {
+                padding: 0;
+                margin: 0 0 15px 0;
+            }
+            .a_module_title {
+                display: none !important;
+                visibility: hidden !important;
+                margin:0;
+            }
+            #access_container {
+                background: none !important;
+            }
+
+        }
+        &.is-rtl {
+            direction: rtl;
         }
         .a_module {
             padding-bottom: 0.6rem;
@@ -359,9 +395,8 @@ hr {
 }
 
 .step-header {
-    font-size: 32px;
-    font-weight: 300;
-    letter-spacing: 2px;
+    font-size: 24px;
+    font-weight: 400;
     margin: 20px 0;
     span {
         display: block;
@@ -372,6 +407,32 @@ hr {
 }
 .step-description {
     font-size:20px;
+}
+
+.builder-step-2 {
+    width: 34%;
+    float: left;
+}
+.builder-step-3 {
+    width: 60%;
+    float: right;
+}
+
+.code-editor {
+    background: black;
+    padding: 10px;
+    color: white;
+    font-size: 13px;
+    direction: ltr;
+    text-align: left;
+    p {
+        direction: ltr;
+        margin: 0 0 5px 0;
+        line-height: 1.4;
+        font-family: Arial, Helvetica, sans-serif;
+        &::-moz-selection { color: $white; background: $wah; }
+        &::selection { color: $white; background: $wah; }
+    }
 }
 
 @media screen and (max-width:960px){
@@ -385,9 +446,87 @@ hr {
         margin: 0 0 40px 0;
         clear: both;
     }
-    .builder-preview {
+    .builder-preview,
+    .builder-live {
         clear: both;
         width: 100%;
         float: left;
+    }
+    .builder-live {
+        margin-top: 20px;
+    }
+    .builder-step-2,
+    .builder-step-3 {
+        width: 100%;
+        float: left;
+    }
+    .code-editor {
+        word-break: break-all;
+    }
+}
+
+.builder-lorem {
+    padding: 10px;
+    line-height: 1.6;
+}
+.navigation {
+    background: #232323;
+    color: #FFF;
+    padding: 5px 0;
+    text-align: center;
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin:0;
+        li {
+            display: inline-block;
+            a {
+                font-size:18px;
+                color: $white;
+                font-weight: 400;
+                display: inline-block;
+                padding: 10px;
+                text-decoration: none;
+                @include trans(300ms);
+                &:hover,
+                &:focus {
+                    background: $wah;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:480px) {
+    .header {
+        padding: 5px;
+    }
+    .container {
+        padding: 0 10px;
+    }
+    .page-titles .page-sub-title {
+        font-size: 18px;
+    }
+    .step-header {
+        font-size: 20px;
+    }
+    .builder-form {
+        input[type="text"] {
+            width: 100%;
+            max-width: 96%;
+        }
+        .submit {
+            font-size: 23px;
+            text-align: center;
+            width: 100%;
+            height: auto;
+            padding: 5px 0;
+        }
+    }
+    .buider-preview textarea {
+        width: 97.5%;
+    }
+    .builder-live .builder-live-content {
+        height: 720px;
     }
 }
