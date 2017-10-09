@@ -57,21 +57,18 @@ hr {
     margin: 0 auto;
 }
 .page-titles {
-    margin:30px 0;
+    margin:15px 0;
     text-align: center;
     .page-title {
         font-weight: 400;
         font-size:30px;
-        margin:0 0 20px 0;
+        margin:0 0 10px 0;
     }
     .page-sub-title{
-        font-size:26px;
+        font-size:24px;
         margin:0;
         span {
-            background: $wah;
-            color: #FFF;
             display: inline-block;
-            padding: 4px 5px;
         }
     }
 }
@@ -90,8 +87,6 @@ hr {
     margin-right: 5%;
     .form-row {
         margin-bottom: 20px;
-        padding-bottom: 20px;
-        border-bottom:1px solid $wah;
         label {
             margin-bottom: 10px;
             display: block;
@@ -99,12 +94,20 @@ hr {
                 display: block;
                 span {
                     display: inline-block;
+                    a {
+                        color: $black;
+                        text-decoration: underline;
+                        &:hover {
+                            text-decoration: none;
+                        }
+                    }
                 }
             }
             span {
                 display: block;
                 font-weight: 400;
                 margin-bottom: 10px;
+                font-size: 18px;
             }
         }
         h3 {
@@ -114,8 +117,8 @@ hr {
             span {
                 background: $wah;
                 color: $white;
-                padding: 2px 10px;
-                display: inline-block;
+                padding: 5px 10px;
+                display: block;
             }
         }
     }
@@ -167,14 +170,14 @@ hr {
         span {
             background: $wah;
             color: $white;
-            padding: 2px 10px;
-            display: inline-block;
+            padding: 5px 10px;
+            display: block;
         }
     }
     .builder-live-content {
         background: $black;
         margin-top: 20px;
-        min-height: 940px;
+        min-height: 870px;
         border:2px solid $wah;
     }
 }
@@ -183,15 +186,16 @@ hr {
     width: 100%;
     float: right;
     margin-bottom: 50px;
-    margin-top: 30px;
-    padding-top: 30px;
+    margin-top: 15px;
     border-top:1px solid $wah;
     textarea {
         direction: ltr;
-        width: 99%;
-        height: 420px;
-        font-size:14px;
-        border:2px solid $wah;
+            width: 91.5%;
+            height: 450px;
+            line-height: 1.5;
+            font-size: 14px;
+            border: 2px solid $wah;
+            padding: 10px;
         &:focus {
             background:$wah;
             color: $white;
@@ -204,8 +208,8 @@ hr {
         span {
             background: $wah;
             color: $white;
-            padding: 2px 10px;
-            display: inline-block;
+            padding: 5px 10px;
+            display: block;
         }
     }
 }
@@ -410,11 +414,11 @@ hr {
 }
 
 .builder-step-2 {
-    width: 34%;
+    width: 28%;
     float: left;
 }
 .builder-step-3 {
-    width: 60%;
+    width: 69%;
     float: right;
 }
 
