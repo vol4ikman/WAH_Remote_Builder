@@ -1,0 +1,12 @@
+{
+  "name"             : "WAH PRO Remote script builder",
+  "author"           : "Alex Volkov",
+  "version"          : "0.1",
+  "short_name"       : "WAH PRO Remote",
+  "lang"             : "en-US",
+  "start_url"        : "https://accessibility-helper.co.il/remote/",
+  "display"          : "standalone",
+  "theme_color"      : "#236478",
+  "background_color" : "#fff",
+  "description"      : "WP Accessibility Helper remote script builder application"
+}
