@@ -151,16 +151,26 @@
                             }"
                         >
                         <div id="access_container" aria-hidden="false">
-                            <button type="button" class="close_container wahout">{{ locale[current_live_lang].live.close }}</button>
+
+                            <button type="button" class="close_container wahout">
+                                {{ advancedSettings ? advanced.close : locale[current_live_lang].live.close }}
+                            </button>
+
                             <div class="access_container_inner">
 
                                 <div class="a_module wah_font_resize">
-                                    <div class="a_module_title">{{ locale[current_live_lang].live.font_resize }}</div>
+                                    <div class="a_module_title">
+                                        {{ advancedSettings ? advanced.font_resize : locale[current_live_lang].live.font_resize }}
+                                    </div>
                                     <div class="a_module_exe font_resizer">
-                                        <button type="button" class="wah-action-button smaller wahout">A-</button>
-                                        <button type="button" class="wah-action-button larger wahout">A+</button>
+                                        <button type="button" class="wah-action-button smaller wahout">
+                                            {{ advancedSettings ? advanced.font_resize_sign : 'A' }}-
+                                        </button>
+                                        <button type="button" class="wah-action-button larger wahout">
+                                            {{ advancedSettings ? advanced.font_resize_sign : 'A' }}+
+                                        </button>
                                         <button type="button" class="wah-action-button wah-font-reset wahout">
-                                            {{ locale[current_live_lang].live.reset_font_size }}
+                                            {{ advancedSettings ? advanced.reset_font_size : locale[current_live_lang].live.reset_font_size }}
                                         </button>
                                     </div>
                                 </div>
@@ -168,7 +178,7 @@
                                 <div class="a_module wah_keyboard_navigation" v-if="!json.setup.hide.keyboard_navigation">
                                     <div class="a_module_exe">
                                         <button type="button" class="wah-action-button wahout wah-call-keyboard-navigation">
-                                            {{ locale[current_live_lang].live.keyboard_navigation }}
+                                            {{ advancedSettings ? advanced.keyboard_navigation : locale[current_live_lang].live.keyboard_navigation }}
                                         </button>
                                     </div>
                                 </div>
@@ -176,7 +186,7 @@
                                 <div class="a_module wah_readable_fonts" v-if="!json.setup.hide.readable_fonts">
                                     <div class="a_module_exe readable_fonts">
                                         <button type="button" class="wah-action-button wahout wah-call-readable-fonts">
-                                            {{ locale[current_live_lang].live.readable_font }}
+                                            {{ advancedSettings ? advanced.readable_font :locale[current_live_lang].live.readable_font }}
                                         </button>
                                     </div>
                                 </div>
@@ -185,7 +195,7 @@
                                     <div class="a_module_title">{{ locale[current_live_lang].live.contrast }}</div>
                                     <div class="a_module_exe">
                                         <button type="button" id="contrast_trigger" class="contrast_trigger wah-action-button wahout wah-call-contrast-trigger">
-                                            {{ locale[current_live_lang].live.choose_color }}
+                                            {{ advancedSettings ? advanced.choose_color : locale[current_live_lang].live.choose_color }}
                                         </button>
                                     </div>
                                 </div>
@@ -193,7 +203,7 @@
                                 <div class="a_module wah_highlight_links" v-if="!json.setup.hide.highlight_links">
                                     <div class="a_module_exe">
                                         <button type="button" class="wah-action-button wahout wah-call-highlight-links">
-                                            {{ locale[current_live_lang].live.highlight_links }}
+                                            {{ advancedSettings ? advanced.highlight_links : locale[current_live_lang].live.highlight_links }}
                                         </button>
                                     </div>
                                 </div>
@@ -201,7 +211,7 @@
                                 <div class="a_module wah_highlight_titles" v-if="!json.setup.hide.highlight_titles">
                                     <div class="a_module_exe">
                                         <button type="button" class="wah-action-button wahout wah-call-highlight-titles">
-                                            {{ locale[current_live_lang].live.highlight_titles }}
+                                            {{ advancedSettings ? advanced.highlight_titles : locale[current_live_lang].live.highlight_titles }}
                                         </button>
                                     </div>
                                 </div>
@@ -209,7 +219,7 @@
                                 <div class="a_module wah_clear_cookies">
                                     <div class="a_module_exe">
                                         <button type="button" class="wah-action-button wahout wah-call-clear-cookies">
-                                            {{ locale[current_live_lang].live.clear_cookies }}
+                                            {{ advancedSettings ? advanced.clear_cookies : locale[current_live_lang].live.clear_cookies }}
                                         </button>
                                     </div>
                                 </div>
@@ -217,7 +227,7 @@
                                 <div class="a_module wah_greyscale">
                                     <div class="a_module_exe">
                                         <button type="button" id="greyscale" class="greyscale wah-action-button wahout wah-call-greyscale">
-                                            {{ locale[current_live_lang].live.images_greyscale }}
+                                            {{ advancedSettings ? advanced.images_greyscale : locale[current_live_lang].live.images_greyscale }}
                                         </button>
                                     </div>
                                 </div>
@@ -225,7 +235,7 @@
                                 <div class="a_module wah_invert" v-if="!json.setup.hide.invert_colors">
                                     <div class="a_module_exe">
                                         <button type="button" class="wah-action-button wahout wah-call-invert">
-                                            {{ locale[current_live_lang].live.invert_colors }}
+                                            {{ advancedSettings ? advanced.invert_colors : locale[current_live_lang].live.invert_colors }}
                                         </button>
                                     </div>
                                 </div>
@@ -233,7 +243,7 @@
                                 <div class="a_module wah_remove_animations" v-if="!json.setup.hide.remove_animations">
                                     <div class="a_module_exe">
                                         <button type="button" accesskey="a" class="wah-action-button wahout wah-call-remove-animations">
-                                            {{ locale[current_live_lang].live.remove_animations }}
+                                            {{ advancedSettings ? advanced.remove_animations : locale[current_live_lang].live.remove_animations }}
                                         </button>
                                     </div>
                                 </div>
@@ -247,6 +257,85 @@
 
         </div>
 
+        <div class="advanced-settings-container">
+            <div class="form-row">
+                <h3>
+                    <span>{{ locale[current_lang].advanced_translation_settings }}:
+                        <i :class="{ 'on' : advancedStatus, 'off' : ! advancedStatus }"></i>
+                    </span>
+                </h3>
+
+                <label class="inline">
+                    <input type="checkbox" v-model="advancedSettings" @change="updateAdvancedSettings()">
+                    <span class="span-title">{{ locale[current_lang].enable_label }}</span>
+                </label>
+
+                <transition name="slide" >
+                    <div class="toggle-advanced-wrapper" v-if="advancedSettings">
+                        <div class="adv-row">
+                            <label>
+                                <span>{{ locale[current_lang].advanced_labels.close_button }}:</span>
+                                <input type="text" v-model="advanced.close">
+                            </label>
+                            <label>
+                                <span>{{ locale[current_lang].advanced_labels.font_resize }}:</span>
+                                <input type="text" v-model="advanced.font_resize">
+                            </label>
+                            <label>
+                                <span>{{ locale[current_lang].advanced_labels.font_size }}:</span>
+                                <input type="text" v-model="advanced.font_resize_sign">
+                            </label>
+                            <label>
+                                <span>{{ locale[current_lang].advanced_labels.reset_font_size }}:</span>
+                                <input type="text" v-model="advanced.reset_font_size">
+                            </label>
+                            <label>
+                                <span>{{ locale[current_lang].advanced_labels.keyboard_navigation }}:</span>
+                                <input type="text" v-model="advanced.keyboard_navigation">
+                            </label>
+                            <label>
+                                <span>{{ locale[current_lang].advanced_labels.readable_font }}:</span>
+                                <input type="text" v-model="advanced.readable_font">
+                            </label>
+                            <label>
+                                <span>{{ locale[current_lang].advanced_labels.contrast }}:</span>
+                                <input type="text" v-model="advanced.contrast">
+                            </label>
+                            <label>
+                                <span>{{ locale[current_lang].advanced_labels.choose_color }}:</span>
+                                <input type="text" v-model="advanced.choose_color">
+                            </label>
+                            <label>
+                                <span>{{ locale[current_lang].advanced_labels.highlight_links }}:</span>
+                                <input type="text" v-model="advanced.highlight_links">
+                            </label>
+                            <label>
+                                <span>{{ locale[current_lang].advanced_labels.highlight_titles }}:</span>
+                                <input type="text" v-model="advanced.highlight_titles">
+                            </label>
+                            <label>
+                                <span>{{ locale[current_lang].advanced_labels.clear_cookies }}:</span>
+                                <input type="text" v-model="advanced.clear_cookies">
+                            </label>
+                            <label>
+                                <span>{{ locale[current_lang].advanced_labels.images_greyscale }}:</span>
+                                <input type="text" v-model="advanced.images_greyscale">
+                            </label>
+                            <label>
+                                <span>{{ locale[current_lang].advanced_labels.invert_colors }}:</span>
+                                <input type="text" v-model="advanced.invert_colors">
+                            </label>
+                            <label>
+                                <span>{{ locale[current_lang].advanced_labels.remove_animations }}:</span>
+                                <input type="text" v-model="advanced.remove_animations">
+                            </label>
+                        </div>
+                    </div>
+                </transition>
+
+            </div>
+        </div>
+
         <div class="buider-preview builder-code" v-if="code">
 
             <div class="builder-step-2">
@@ -254,7 +343,6 @@
                     <span>{{ locale[current_lang].step2_title }}</span>
                 </div>
 
-                <h3><span>{{ locale[current_lang].code_title }}:</span></h3>
                 <textarea v-model="code" @click="selectCode()" ref="codeEditor"></textarea>
                 <div class="notice-wrapper" v-if="code">
                     <div class="copied" v-if="copied">
@@ -302,6 +390,8 @@ export default {
             defaultLivePreviewBG    : 'black',
             defaultLivePreviewColor : 'white',
             step3_scripts_jquery    : '&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/core.js"&gt;',
+            advancedStatus          : false,
+            advancedSettings        : false,     // custom translations
             locale : {
                 en : {
                     lorem_ipsum                  : '<h1>Lorem title</h1><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
@@ -328,7 +418,6 @@ export default {
                     disable_keyboard_navigations : 'Disable "Keyboard navigation" button?',
                     disable_invert_colors        : 'Disable "Invert colors" button?',
                     disable_readable_fonts       : 'Disable "Readable fonts" button?',
-                    code_title                   : 'Code',
                     english_label                : 'English',
                     russian_label                : 'Russian',
                     hebrew_label                 : 'Hebrew',
@@ -357,6 +446,24 @@ export default {
                         images_greyscale    : 'Images greyscale',
                         invert_colors       : 'Invert colors',
                         remove_animations   : 'Remove animations'
+                    },
+                    advanced_translation_settings : 'Advanced Translation Settings',
+                    enable_label : 'Enable',
+                    advanced_labels : {
+                        close_button : 'Close button label',
+                        font_resize : 'Font resize label',
+                        font_size : 'Font sign (A+/A-) label',
+                        reset_font_size : 'Reset font size label',
+                        keyboard_navigation : 'Keyboard navigation label',
+                        readable_font : 'Readable font label',
+                        contrast : 'Contrast label',
+                        choose_color : 'Choose color label',
+                        highlight_links : 'Highlight links label',
+                        highlight_titles : 'Highlight titles label',
+                        clear_cookies : 'Clear cookies label',
+                        images_greyscale : 'Images greyscale label',
+                        invert_colors : 'Invert colors label',
+                        remove_animations: 'Remove animations label'
                     }
                 },
                 ru : {
@@ -384,7 +491,6 @@ export default {
                     disable_keyboard_navigations : 'Отключить кнопку "Навигации с клавиатуры"?',
                     disable_invert_colors        : 'Отключить кнопку "Искажение цвета"?',
                     disable_readable_fonts       : 'Отключить кнопку "Читаемый шрифт"?',
-                    code_title                   : 'Код',
                     english_label                : 'Английский (США и Великобритания)',
                     russian_label                : 'Русский (Россия)',
                     hebrew_label                 : 'Иврит (Израиль)',
@@ -413,6 +519,24 @@ export default {
                         images_greyscale    : 'Серый оттенок',
                         invert_colors       : 'Инвертировать цвета',
                         remove_animations   : 'Отключить анимацию'
+                    },
+                    advanced_translation_settings : 'Настройки перевода',
+                    enable_label : 'Включить',
+                    advanced_labels : {
+                        close_button : 'Закрыть - метка',
+                        font_resize : 'Размер фонта - метка',
+                        font_size : 'Символ размера фонта (A+/A-) - метка',
+                        reset_font_size : 'Сбросить размер фонта - метка',
+                        keyboard_navigation : 'Навигация с клавиатуры - метка',
+                        readable_font : 'Стандартный фонт - метка',
+                        contrast : 'Контраст - метка',
+                        choose_color : 'Выбрать цвет - метка',
+                        highlight_links : 'Подсветить ссылки - метка',
+                        highlight_titles : 'Подсветить заголовки - метка',
+                        clear_cookies : 'Сбросить настройки - метка',
+                        images_greyscale : 'Серые картинки - метка',
+                        invert_colors : 'Инвертировать цвета - метка',
+                        remove_animations: 'Отключить анимацию - метка'
                     }
                 },
                 he : {
@@ -440,7 +564,6 @@ export default {
                     disable_keyboard_navigations : 'הסר כפתור "ניווט מקלדת"?',
                     disable_invert_colors        : 'הסר כפתור "היפוך צבעים"?',
                     disable_readable_fonts       : 'הסר כפתור "פונט קריא"?',
-                    code_title                   : 'קוד',
                     english_label                : 'אנגלית',
                     russian_label                : 'רוסית',
                     hebrew_label                 : 'עברית',
@@ -469,6 +592,24 @@ export default {
                         images_greyscale    : 'תמונות אפורות',
                         invert_colors       : 'היפוך צבעים',
                         remove_animations   : 'הסר אנימציה'
+                    },
+                    advanced_translation_settings : 'הגדרות תרגום',
+                    enable_label : 'הפעל',
+                    advanced_labels : {
+                        close_button : 'סגור - תגית',
+                        font_resize : 'גודל פונט - תגית',
+                        font_size : 'סימן גודל פונט (A+/A-) - תגית',
+                        reset_font_size : 'איפוס גודל פונט - תגית',
+                        keyboard_navigation : 'ניווט מקלדת - תגית',
+                        readable_font : 'פונט קריא - תגית',
+                        contrast : 'ניגודיות - תגית',
+                        choose_color : 'בחר צבע - תגית',
+                        highlight_links : 'סימון קישורים - תגית',
+                        highlight_titles : 'סימון כותרות - תגית',
+                        clear_cookies : 'איפוס - תגית',
+                        images_greyscale : 'תמונות אפורות - תגית',
+                        invert_colors : 'היפוך צבעים - תגית',
+                        remove_animations: 'הסר אנימציות - תגית'
                     }
                 }
             },
@@ -492,13 +633,41 @@ export default {
                         readable_fonts      : false
                     }
                 }
+            },
+            advanced : {
+                close               : 'Close',
+                font_resize         : 'Font Resize',
+                font_resize_sign    : 'A',
+                reset_font_size     : 'Rest font size',
+                keyboard_navigation : 'Keyboard navigation',
+                readable_font       : 'Readable font',
+                contrast            : 'Contrast',
+                choose_color        : 'Choose color',
+                highlight_links     : 'Highlight links',
+                highlight_titles    : 'Highlight titles',
+                clear_cookies       : 'Clear cookies',
+                images_greyscale    : 'Images greyscale',
+                invert_colors       : 'Invert colors',
+                remove_animations   : 'Remove animations'
             }
         }
     },
     methods: {
+        updateAdvancedSettings(){
+
+            this.advancedStatus = ! this.advancedStatus;
+
+            if( this.advancedSettings ){
+                this.json.setup.translations = this.advanced;
+            } else {
+                delete this.json.setup.translations;
+            }
+
+            this.generateCode();
+        },
         generateCode(){
             var str_start = 'var wahproConfig = ';
-            var str = JSON.stringify(this.json, undefined, 4);
+            var str = JSON.stringify( this.json, undefined, 4 );
             var str_end = ';';
             var str_result = str_start + str + str_end;
             this.code = str_result;
@@ -526,6 +695,12 @@ export default {
     },
     watch: {
         json: {
+            handler: function (val, oldVal) {
+                this.generateCode();
+            },
+            deep: true
+        },
+        advanced : {
             handler: function (val, oldVal) {
                 this.generateCode();
             },

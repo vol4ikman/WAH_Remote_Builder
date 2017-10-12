@@ -111,7 +111,7 @@ hr {
             }
         }
         h3 {
-            font-weight: 300;
+            font-weight: 400;
             font-size: 20px;
             margin:0 0 20px 0;
             span {
@@ -119,6 +119,22 @@ hr {
                 color: $white;
                 padding: 5px 10px;
                 display: block;
+                position: relative;
+                i {
+                    position: absolute;
+                    right: 6px;
+                    top: 6px;
+                    width: 21px;
+                    height: 21px;
+                    border:1px solid $black;
+                    display: inline-block;
+                    &.on {
+                        background: green;
+                    }
+                    &.off {
+                        background: $red;
+                    }
+                }
             }
         }
     }
@@ -164,7 +180,7 @@ hr {
     width: 40%;
     float: right;
     h3 {
-        font-weight: 300;
+        font-weight: 400;
         font-size: 20px;
         margin:0 0 20px 0;
         span {
@@ -190,7 +206,7 @@ hr {
     border-top:1px solid $wah;
     textarea {
         direction: ltr;
-            width: 91.5%;
+            width: 94%;
             height: 450px;
             line-height: 1.5;
             font-size: 14px;
@@ -249,6 +265,16 @@ hr {
         }
         .buider-preview {
             float: left;
+        }
+        .advanced-settings-container {
+            h3 {
+                span {
+                    i {
+                        right: auto;
+                        left: 6px;
+                    }
+                }
+            }
         }
     }
 }
@@ -410,15 +436,15 @@ hr {
     }
 }
 .step-description {
-    font-size:20px;
+    font-size:18px;
 }
 
 .builder-step-2 {
-    width: 28%;
+    width: 42%;
     float: left;
 }
 .builder-step-3 {
-    width: 69%;
+    width: 56%;
     float: right;
 }
 
@@ -436,6 +462,100 @@ hr {
         font-family: Arial, Helvetica, sans-serif;
         &::-moz-selection { color: $white; background: $wah; }
         &::selection { color: $white; background: $wah; }
+    }
+}
+
+.slide-enter-active {
+    transition: all .5s ease;
+}
+.slide-leave-active {
+    transition: all .5s ease;
+}
+.slide-enter,
+.slide-leave-to {
+    transform: translateY(-20px);
+    opacity: 0;
+}
+
+.advanced-settings-container {
+    clear: both;
+    float: left;
+    width: 100%;
+    margin-top: 20px;
+    .span-title {
+        font-weight: 400;
+        font-size: 18px;
+    }
+    h3 {
+        font-weight: 400;
+        font-size: 20px;
+        margin:0 0 20px 0;
+        span {
+            background: $wah;
+            color: $white;
+            padding: 5px 10px;
+            position: relative;
+            display: block;
+            i {
+                position: absolute;
+                right: 6px;
+                top: 6px;
+                width: 21px;
+                height: 21px;
+                border:1px solid $black;
+                display: inline-block;
+                &.on {
+                    background: green;
+                }
+                &.off {
+                    background: $red;
+                }
+            }
+        }
+    }
+    .adv-row {
+        margin-bottom: 20px;
+        label {
+            margin-bottom: 10px;
+            display: block;
+            width: 49%;
+            float: left;
+            &:nth-child(2n+0){
+                float: right;
+            }
+            span {
+                display: block;
+                font-weight: 400;
+                margin-bottom: 5px;
+                font-size: 16px;
+            }
+        }
+        h3 {
+            font-weight: 300;
+            font-size: 20px;
+            margin:0 0 20px 0;
+            span {
+                background: $wah;
+                color: $white;
+                padding: 5px 10px;
+                display: block;
+                position: relative;
+            }
+        }
+    }
+    input {
+        font-size:18px;
+        @include trans(250ms);
+        &[type="text"]{
+            border:2px solid $wah;
+            height: 25px;
+            padding: 5px;
+            width: 97.5%;
+        }
+        &:focus {
+            background:$wah;
+            color: $white;
+        }
     }
 }
 
@@ -466,6 +586,14 @@ hr {
     }
     .code-editor {
         word-break: break-all;
+    }
+    .advanced-settings-container {
+        input[type="text"] {
+            width: 95.5%;
+        }
+        .adv-row label {
+            width: 100%;
+        }
     }
 }
 
@@ -515,6 +643,7 @@ hr {
         font-size: 20px;
     }
     .builder-form {
+        margin-bottom: 0;
         input[type="text"] {
             width: 100%;
             max-width: 96%;
@@ -528,9 +657,15 @@ hr {
         }
     }
     .buider-preview textarea {
-        width: 97.5%;
+        width: 92.5%;
     }
-    .builder-live .builder-live-content {
-        height: 720px;
+    .builder-live {
+        margin-top: 0;
+        .builder-live-content {
+            height: 720px;
+        }
+    }
+    .builder-form .form-row label span {
+        font-size:15px;
     }
 }
