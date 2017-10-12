@@ -20,6 +20,12 @@ $wah: #236478;
     font-weight: 400;
 }
 
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 #app {
     margin-bottom: 30px;
 }
@@ -143,9 +149,9 @@ hr {
         @include trans(250ms);
         &[type="text"]{
             border:2px solid $wah;
-            height: 30px;
+            height: 32px;
             padding: 5px;
-            width: 97.5%;
+            width: 100%;
         }
         &:focus {
             background:$wah;
@@ -206,7 +212,7 @@ hr {
     border-top:1px solid $wah;
     textarea {
         direction: ltr;
-            width: 94%;
+            width: 100%;
             height: 450px;
             line-height: 1.5;
             font-size: 14px;
@@ -444,7 +450,7 @@ hr {
     float: left;
 }
 .builder-step-3 {
-    width: 56%;
+    width: 55%;
     float: right;
 }
 
@@ -516,7 +522,7 @@ hr {
     .adv-row {
         margin-bottom: 20px;
         label {
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             display: block;
             width: 49%;
             float: left;
@@ -548,9 +554,9 @@ hr {
         @include trans(250ms);
         &[type="text"]{
             border:2px solid $wah;
-            height: 25px;
+            height: 32px;
             padding: 5px;
-            width: 97.5%;
+            width: 100%;
         }
         &:focus {
             background:$wah;
@@ -589,7 +595,7 @@ hr {
     }
     .advanced-settings-container {
         input[type="text"] {
-            width: 95.5%;
+            width: 100%;
         }
         .adv-row label {
             width: 100%;
@@ -646,7 +652,6 @@ hr {
         margin-bottom: 0;
         input[type="text"] {
             width: 100%;
-            max-width: 96%;
         }
         .submit {
             font-size: 23px;
@@ -657,7 +662,7 @@ hr {
         }
     }
     .buider-preview textarea {
-        width: 92.5%;
+        width: 100%;
     }
     .builder-live {
         margin-top: 0;
