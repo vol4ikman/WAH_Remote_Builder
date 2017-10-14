@@ -76,6 +76,11 @@
                     </label>
 
                     <label class="inline">
+                        <input type="checkbox" v-model="json.setup.mobile">
+                        <span v-html="locale[current_lang].mobile"></span>
+                    </label>
+
+                    <label class="inline">
                         <input type="checkbox" v-model="json.setup.jquery">
                         <span v-html="locale[current_lang].jquery"></span>
                     </label>
@@ -394,6 +399,7 @@ export default {
             advancedSettings        : false,     // custom translations
             locale : {
                 en : {
+                    mobile                       : 'Hide for mobile?',
                     lorem_ipsum                  : '<h1>Lorem title</h1><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
                     step1_title                  : 'Step 1 - Generate script code',
                     step2_title                  : 'Step 2 - Copy code',
@@ -467,6 +473,7 @@ export default {
                     }
                 },
                 ru : {
+                    mobile                       : 'Спрятать на мобильных устройствах?',
                     lorem_ipsum                  : '<h1>Лорем ипсум заголовок</h1><p>Лорем ипсум долор сит амет, ут сит суас граецис трацтатос, ид дицта сонет модератиус сеа, ерос импедит хас ид. Реяуе тантас ментитум но про, еум ид воцент плацерат цонсеяуат. Нам ессе волутпат петентиум ут. Юсто нихил цонституам ан сед. Не цонвенире интерессет вел, дисцере алияуид феугаит при ид.</p>',
                     step1_title                  : 'Шаг 1 - Заполнить форму и получить код.',
                     step2_title                  : 'Шаг 2 - Скопировать код',
@@ -540,6 +547,7 @@ export default {
                     }
                 },
                 he : {
+                    mobile                       : 'הסתר לניידים?',
                     lorem_ipsum                  : '<h1>לורם איפסום כותרת</h1><p>לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית קוואזי במר מודוף. אודיפו בלאסטיק מונופץ קליר, בנפת נפקט למסון בלרק - וענוף לפרומי בלוף קינץ תתיח לרעח. לת צשחמי צש בליא, מנסוטו צמלח לביקו ננבי, צמוקו בלוקריה שיצמה ברורק.</p>',
                     step1_title                  : 'שלב 1 - למלא טופס ולקבל קוד התמאה.',
                     step2_title                  : 'שלב 2 - להעתיק קוד',
@@ -623,7 +631,8 @@ export default {
                     debug    : true,              // true or false
                     stats    : true,              // true or false
                     lang     : 'en',              // en, ru, he [default en]
-                    jquery   : false,             // true or false
+                    jquery   : false,             // true or false,
+                    mobile   : true,
                     hide : {
                         remove_animations   : false,
                         highlight_titles    : false,
