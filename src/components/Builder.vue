@@ -366,7 +366,7 @@
                     <div class="code-editor" contenteditable="true">
                         <p v-html="step3_scripts_jquery" v-if="!json.setup.jquery"></p>
                         <p v-html="locale[current_lang].step3_script_config"></p>
-                        <p>&lt;script src="https://accessibility-helper.co.il/remote/script/wahpro?uid={{uid}}" charset="utf-8"&gt;&lt;/script&gt;</p>
+                        <p>&lt;script src="https://accessibility-helper.co.il/remote/wahpro?uid={{uid}}" charset="utf-8"&gt;&lt;/script&gt;</p>
                     </div>
                     <div class="notice" v-if="!uid">
                         {{ locale[current_lang].error_id_label }}
@@ -394,7 +394,7 @@ export default {
             is_rtl                  : false,
             defaultLivePreviewBG    : 'black',
             defaultLivePreviewColor : 'white',
-            step3_scripts_jquery    : '&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/core.js"&gt;',
+            step3_scripts_jquery    : '&lt;script src="https://code.jquery.com/jquery-1.12.4.min.js"&gt;',
             advancedStatus          : false,
             advancedSettings        : false,     // custom translations
             locale : {
