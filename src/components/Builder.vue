@@ -29,15 +29,25 @@
 
             <form class="builder-form" method="post" @submit.prevent>
 
-                <div class="form-row">
+                <div class="form-row is-user-id-row">
                     <h3><span>{{ locale[current_lang].user_settings }}:</span></h3>
-                    <label>
-                        <span>{{ locale[current_lang].user_id }}:</span>
-                        <input type="text" v-model="uid">
+                    <div v-if="!free_mode">
+                        <label>
+                            <span>{{ locale[current_lang].user_id }}:</span>
+                            <input type="text" v-model="uid">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-row is-free-user-row">
+                    <h3 v-if="!free_mode">--- OR ---</h3>
+                    <label class="inline">
+                        <input type="checkbox" v-model="free_mode" @change="update_freemode_params()">
+                        <span>Use free version</span>
                     </label>
                 </div>
 
-                <div class="form-row">
+                <div class="form-row is-theme_settings-row" v-if="!free_mode">
                     <h3><span>{{ locale[current_lang].theme_settings }}:</span></h3>
                     <label>
                         <span>{{ locale[current_lang].theme_name }}:</span>
@@ -63,7 +73,7 @@
                     </label>
                 </div>
 
-                <div class="form-row">
+                <div class="form-row is-setup_settings-row">
                     <h3><span>{{ locale[current_lang].setup_settings }}:</span></h3>
 
                     <label>
@@ -75,55 +85,62 @@
                         </select>
                     </label>
 
-                    <label class="inline">
-                        <input type="checkbox" v-model="json.setup.mobile">
-                        <span v-html="locale[current_lang].mobile"></span>
-                    </label>
+                    <div class="setup_inputs_wrapper">
 
-                    <label class="inline">
-                        <input type="checkbox" v-model="json.setup.jquery">
-                        <span v-html="locale[current_lang].jquery"></span>
-                    </label>
+                        <label class="inline" v-if="!free_mode">
+                            <input type="checkbox" v-model="json.setup.mobile">
+                            <span v-html="locale[current_lang].mobile"></span>
+                        </label>
 
-                    <label class="inline">
-                        <input type="checkbox" v-model="json.setup.debug">
-                        <span>{{ locale[current_lang].enable_debug }}</span>
-                    </label>
+                        <label class="inline">
+                            <input type="checkbox" v-model="json.setup.jquery">
+                            <span v-html="locale[current_lang].jquery"></span>
+                        </label>
 
-                    <label class="inline">
-                        <input type="checkbox" v-model="json.setup.stats">
-                        <span>{{ locale[current_lang].enable_statistics }}</span>
-                    </label>
+                        <div v-if="!free_mode">
+                            <label class="inline">
+                                <input type="checkbox" v-model="json.setup.debug">
+                                <span>{{ locale[current_lang].enable_debug }}</span>
+                            </label>
 
-                    <label class="inline">
-                        <input type="checkbox" v-model="json.setup.hide.remove_animations">
-                        <span>{{ locale[current_lang].disable_remove_animations }}</span>
-                    </label>
+                            <label class="inline">
+                                <input type="checkbox" v-model="json.setup.stats">
+                                <span>{{ locale[current_lang].enable_statistics }}</span>
+                            </label>
 
-                    <label class="inline">
-                        <input type="checkbox" v-model="json.setup.hide.highlight_titles">
-                        <span>{{ locale[current_lang].disable_highlight_titles }}</span>
-                    </label>
+                            <label class="inline">
+                                <input type="checkbox" v-model="json.setup.hide.remove_animations">
+                                <span>{{ locale[current_lang].disable_remove_animations }}</span>
+                            </label>
 
-                    <label class="inline">
-                        <input type="checkbox" v-model="json.setup.hide.highlight_links">
-                        <span>{{ locale[current_lang].disable_highlight_links }}</span>
-                    </label>
+                            <label class="inline">
+                                <input type="checkbox" v-model="json.setup.hide.highlight_titles">
+                                <span>{{ locale[current_lang].disable_highlight_titles }}</span>
+                            </label>
 
-                    <label class="inline">
-                        <input type="checkbox" v-model="json.setup.hide.keyboard_navigation">
-                        <span>{{ locale[current_lang].disable_keyboard_navigations }}</span>
-                    </label>
+                            <label class="inline">
+                                <input type="checkbox" v-model="json.setup.hide.highlight_links">
+                                <span>{{ locale[current_lang].disable_highlight_links }}</span>
+                            </label>
 
-                    <label class="inline">
-                        <input type="checkbox" v-model="json.setup.hide.invert_colors">
-                        <span>{{ locale[current_lang].disable_invert_colors }}</span>
-                    </label>
+                            <label class="inline">
+                                <input type="checkbox" v-model="json.setup.hide.keyboard_navigation">
+                                <span>{{ locale[current_lang].disable_keyboard_navigations }}</span>
+                            </label>
 
-                    <label class="inline">
-                        <input type="checkbox" v-model="json.setup.hide.readable_fonts">
-                        <span>{{ locale[current_lang].disable_readable_fonts }}</span>
-                    </label>
+                            <label class="inline">
+                                <input type="checkbox" v-model="json.setup.hide.invert_colors">
+                                <span>{{ locale[current_lang].disable_invert_colors }}</span>
+                            </label>
+
+                            <label class="inline">
+                                <input type="checkbox" v-model="json.setup.hide.readable_fonts">
+                                <span>{{ locale[current_lang].disable_readable_fonts }}</span>
+                            </label>
+                        </div>
+
+                    </div>
+
                 </div>
 
             </form>
@@ -196,7 +213,7 @@
                                     </div>
                                 </div>
 
-                                <div class="a_module wah_contrast_trigger">
+                                <div class="a_module wah_contrast_trigger" v-if="!json.setup.hide.contrast">
                                     <div class="a_module_title">{{ locale[current_live_lang].live.contrast }}</div>
                                     <div class="a_module_exe">
                                         <button type="button" id="contrast_trigger" class="contrast_trigger wah-action-button wahout wah-call-contrast-trigger">
@@ -262,7 +279,7 @@
 
         </div>
 
-        <div class="advanced-settings-container">
+        <div class="advanced-settings-container" v-if="this.free_mode == false">
             <div class="form-row">
                 <h3>
                     <span>{{ locale[current_lang].advanced_translation_settings }}:
@@ -387,6 +404,7 @@ export default {
     data () {
         return {
             uid                     : '',
+            free_mode               : false,
             code                    : '',
             copied                  : false,
             current_lang            : 'en',
@@ -622,6 +640,7 @@ export default {
                 }
             },
             json: {
+                free_mode : false,
                 theme: {
                     name     : 'dark',           // dark || light
                     position : 'right',          // right || left
@@ -639,7 +658,8 @@ export default {
                         highlight_links     : false,
                         keyboard_navigation : false,
                         invert_colors       : false,
-                        readable_fonts      : false
+                        readable_fonts      : false,
+                        contrast            : false
                     }
                 }
             },
@@ -662,6 +682,21 @@ export default {
         }
     },
     methods: {
+        switch_free_mode(){
+            this.free_mode = true;
+        },
+        update_freemode_params(){
+            if( this.free_mode ){
+                this.json.setup.mobile        = false;
+                this.json.setup.debug         = false;
+                this.json.setup.stats         = false;
+                this.json.setup.hide.contrast = true;
+                this.json.free_mode           = true;
+            } else {
+                this.json.free_mode           = false;
+                this.json.setup.hide.contrast = false;
+            }
+        },
         updateAdvancedSettings(){
 
             this.advancedStatus = ! this.advancedStatus;

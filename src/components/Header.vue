@@ -16,6 +16,9 @@
                 <li>
                     <a href="https://accessibility-helper.co.il/contact/">Contact</a>
                 </li>
+                <li>
+                    <a href="https://accessibility-helper.co.il/pro/">WAH Pro</a>
+                </li>
             </ul>
         </nav>
 
